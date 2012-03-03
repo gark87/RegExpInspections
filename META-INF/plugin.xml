@@ -1,0 +1,23 @@
+<idea-plugin version="2">
+  <name>RegExpNazi</name>
+  <description>This is a bunch of inspections about restrictions for RegExps.</description>
+  <version>0.0.1-DUMMY</version>
+  <vendor>gark87</vendor>
+  <idea-version since-build="8000"/>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <inspectionToolProvider implementation="org.gark87.idea.regexp.nazi.RegExpNaziToolProvider"/>
+  </extensions>
+</idea-plugin>
