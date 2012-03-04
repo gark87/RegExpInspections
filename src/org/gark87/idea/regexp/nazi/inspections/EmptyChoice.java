@@ -1,4 +1,4 @@
-package inspections;
+package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.Project;
@@ -6,6 +6,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.util.PsiTreeUtil;
+import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
 import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.intellij.lang.regexp.RegExpTT;
@@ -31,7 +32,7 @@ public class EmptyChoice extends LocalInspectionTool {
     @NotNull
     @Override
     public String getGroupDisplayName() {
-        return "RegExpNazi";
+        return RegExpNaziToolProvider.GROUP_NAME;
     }
 
     @Nls
@@ -49,7 +50,7 @@ public class EmptyChoice extends LocalInspectionTool {
 
 
     @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, boolean isOnTheFly) {
+    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, final boolean isOnTheFly) {
         if (file.getClass() != RegExpFile.class)
             return ProblemDescriptor.EMPTY_ARRAY;
         final List<ProblemDescriptor> result = new ArrayList<ProblemDescriptor>();
@@ -61,20 +62,20 @@ public class EmptyChoice extends LocalInspectionTool {
                     final PsiElement nextSibling = branch.getNextSibling();
                     RegExpPatternImpl patternParent = (RegExpPatternImpl) branch.getParent();
                     if (nextSibling != null && nextSibling.getNode().getElementType() == RegExpTT.UNION)
-                        result.add(createProblemDesc(nextSibling, patternParent, manager, "Left choice is empty"));
+                        result.add(createProblemDesc(nextSibling, patternParent, isOnTheFly, manager, "Left choice is empty"));
                     final PsiElement prevSibling = branch.getPrevSibling();
                     if (prevSibling != null && prevSibling.getNode().getElementType() == RegExpTT.UNION)
-                        result.add(createProblemDesc(prevSibling, patternParent, manager, "Right choice is empty"));
+                        result.add(createProblemDesc(prevSibling, patternParent, isOnTheFly,  manager, "Right choice is empty"));
                 }
             }
         });
         return result.toArray(new ProblemDescriptor[result.size()]);
     }
 
-    private ProblemDescriptor createProblemDesc(PsiElement element, RegExpPatternImpl pattern,
+    private ProblemDescriptor createProblemDesc(PsiElement element, RegExpPatternImpl pattern, boolean isOnTheFly,
                                                 InspectionManager manager, String text)
     {
-        return manager.createProblemDescriptor(element, text, false,
+        return manager.createProblemDescriptor(element, text, isOnTheFly,
                 new LocalQuickFix[]{new ReplaceEmptyChoice(pattern)}, ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
 

@@ -1,7 +1,9 @@
 package org.gark87.idea.regexp.nazi;
 
 import com.intellij.codeInspection.InspectionToolProvider;
-import inspections.EmptyChoice;
+import org.gark87.idea.regexp.nazi.inspections.EmptyChoice;
+import org.gark87.idea.regexp.nazi.inspections.DuplicationInCharacterClasses;
+import org.gark87.idea.regexp.nazi.inspections.UselessCharacterClass;
 
 /**
  * This is my inspections bundle for RegExps.
@@ -9,7 +11,8 @@ import inspections.EmptyChoice;
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
 public class RegExpNaziToolProvider implements InspectionToolProvider {
-    private static final Class[] INSPECTIONS = new Class[]{EmptyChoice.class};
+    public static final String GROUP_NAME = "RegExpNazi";
+    private static final Class[] INSPECTIONS = new Class[]{EmptyChoice.class, DuplicationInCharacterClasses.class, UselessCharacterClass.class};
 
     public Class[] getInspectionClasses() {
         return INSPECTIONS;

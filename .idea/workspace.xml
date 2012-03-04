@@ -19,6 +19,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/UselessCharacterClass.java" line="55" class="org.gark87.idea.regexp.nazi.inspections.UselessCharacterClass$1" package="org.gark87.idea.regexp.nazi.inspections">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -59,10 +74,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EmptyChoice.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/inspections/EmptyChoice.java">
+      <file leaf-file-name="EmptyChoice.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/EmptyChoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="83" selection-start="6064" selection-end="6064" vertical-scroll-proportion="1.1275415">
+            <state line="146" column="94" selection-start="5917" selection-end="6188" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,38 +85,60 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegExpElementImpl.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/impl/RegExpElementImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RegExpNaziToolProvider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/RegExpNaziToolProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
+            <state line="14" column="130" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmptyChoice.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/inspectionDescriptions/EmptyChoice.html">
+      <file leaf-file-name="UselessCharacterClass.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/UselessCharacterClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="-1.3076923">
+            <state line="55" column="0" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegExpClass.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpClass.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="54" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="List.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://D:/Java/jdk1.6.0_14/src.zip!/java/util/List.java">
+      <file leaf-file-name="UselessCharacterClass.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/inspectionDescriptions/UselessCharacterClass.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="13" selection-start="6251" selection-end="6251" vertical-scroll-proportion="0.0">
+            <state line="2" column="128" selection-start="142" selection-end="142" vertical-scroll-proportion="-1.3076923">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DuplicationInsideClasses.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/inspectionDescriptions/DuplicationInsideClasses.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0662768">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DuplicationInCharacterClasses.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/DuplicationInCharacterClasses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="72" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,43 +146,25 @@
       <file leaf-file-name="InspectionManager.class" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/InspectionManager.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="66" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0">
+            <state line="14" column="78" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProblemDescriptor.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/ProblemDescriptor.class">
+      <file leaf-file-name="Pattern.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/Java/jdk1.6.0_14/src.zip!/java/util/regex/Pattern.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
+            <state line="131" column="57" selection-start="7200" selection-end="7202" vertical-scroll-proportion="-11.615385">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProblemDescriptorImpl.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/codeInspection/ex/ProblemDescriptorImpl.class">
+      <file leaf-file-name="Character.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://D:/Java/jdk1.6.0_14/src.zip!/java/lang/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegExpTT.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/RegExpTT.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegExpRecursiveElementVisitor.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpRecursiveElementVisitor.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="11" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
+            <state line="1950" column="21" selection-start="70465" selection-end="70465" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,9 +186,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/inspections/VerticalBarInsideBrackets.java" />
         <option value="$PROJECT_DIR$/META-INF/plugin.xml" />
-        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/RegExpNaziToolProvider.java" />
         <option value="$PROJECT_DIR$/src/inspectionDescriptions/EmptyChoice.html" />
         <option value="$PROJECT_DIR$/src/inspections/EmptyChoice.java" />
+        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/DublicationInCharacterClasses.java" />
+        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/EmptyChoice.java" />
+        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/RegExpNaziToolProvider.java" />
+        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/DuplicationInCharacterClasses.java" />
+        <option value="$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/UselessCharacterClass.java" />
+        <option value="$PROJECT_DIR$/src/inspectionDescriptions/UselessCharacterClass.html" />
+        <option value="$PROJECT_DIR$/src/inspectionDescriptions/DuplicationInsideClasses.html" />
       </list>
     </option>
   </component>
@@ -256,7 +281,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="nazi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="inspections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RegExpNazi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RegExpNazi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -306,6 +349,11 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.gark87.idea.regexp.nazi.inspections" />
+    </key>
   </component>
   <component name="RunManager" selected="Plugin.RegExpNazi">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -445,10 +493,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1688" height="1028" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="96" y="96" width="1488" height="828" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -459,10 +507,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969324" sideWeight="0.67045456" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969324" sideWeight="0.66818184" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.67045456" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3318182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3318182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -515,79 +563,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/extapi/psi/PsiFileBase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="16" selection-start="975" selection-end="975" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/psi/PsiElement.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="53" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpBranch.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/psi/PsiElementVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpElementVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/LocalInspectionTool.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="124" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpRecursiveElementVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/RegExpTT.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/ProblemDescriptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/codeInspection/ex/ProblemDescriptorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/InspectionManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="66" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -606,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/RegExpNaziToolProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/impl/RegExpElementImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0">
@@ -620,12 +591,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inspections/EmptyChoice.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpClassElement.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="83" selection-start="6064" selection-end="6064" vertical-scroll-proportion="1.1275415">
+        <state line="5" column="17" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpCharRange.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/jdk1.6.0_14/src.zip!/java/lang/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1950" column="21" selection-start="70465" selection-end="70465" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/jdk1.6.0_14/src.zip!/java/util/regex/Pattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="57" selection-start="7200" selection-end="7202" vertical-scroll-proportion="-11.615385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/codeInspection/InspectionManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="78" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/RegExpNaziToolProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="130" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/EmptyChoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="94" selection-start="5917" selection-end="6188" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/org/intellij/lang/regexp/psi/RegExpClass.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="54" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/DuplicationInCharacterClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="72" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/gark87/idea/regexp/nazi/inspections/UselessCharacterClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inspectionDescriptions/UselessCharacterClass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="128" selection-start="142" selection-end="142" vertical-scroll-proportion="-1.3076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inspectionDescriptions/DuplicationInsideClasses.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0662768">
+          <folding />
         </state>
       </provider>
     </entry>
