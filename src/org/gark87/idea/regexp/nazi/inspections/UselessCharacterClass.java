@@ -2,12 +2,14 @@ package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
 import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.RegExpFileType;
+import org.intellij.lang.regexp.RegExpTT;
 import org.intellij.lang.regexp.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -53,7 +55,11 @@ public class UselessCharacterClass extends LocalInspectionTool {
         file.acceptChildren(new RegExpRecursiveElementVisitor() {
             @Override
             public void visitRegExpClass(RegExpClass expClass) {
-                if (expClass.isNegated())
+                PsiElement firstChild = expClass.getFirstChild();
+                if (firstChild == null)
+                    return;
+                PsiElement secondChild = firstChild.getNextSibling();
+                if (secondChild == null || secondChild.getNode().getElementType() == RegExpTT.CARET)
                     return;
                 RegExpClassElement[] elements = PsiTreeUtil.getChildrenOfType(expClass, RegExpClassElement.class);
                 if (elements == null)
