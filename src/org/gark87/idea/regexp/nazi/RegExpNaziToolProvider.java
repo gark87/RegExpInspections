@@ -1,10 +1,7 @@
 package org.gark87.idea.regexp.nazi;
 
 import com.intellij.codeInspection.InspectionToolProvider;
-import org.gark87.idea.regexp.nazi.inspections.EmptyChoice;
-import org.gark87.idea.regexp.nazi.inspections.DuplicationInCharacterClasses;
-import org.gark87.idea.regexp.nazi.inspections.UselessCharacterClass;
-import org.gark87.idea.regexp.nazi.inspections.UselessRegExpOption;
+import org.gark87.idea.regexp.nazi.inspections.*;
 
 /**
  * This is my inspections bundle for RegExps.
@@ -14,7 +11,7 @@ import org.gark87.idea.regexp.nazi.inspections.UselessRegExpOption;
 public class RegExpNaziToolProvider implements InspectionToolProvider {
     public static final String GROUP_NAME = "RegExpNazi";
     private static final Class[] INSPECTIONS = {EmptyChoice.class, DuplicationInCharacterClasses.class,
-            UselessCharacterClass.class, UselessRegExpOption.class};
+            UselessCharacterClass.class, UselessRegExpOption.class, CapturingZeroWidthAssertion.class};
 
     public Class[] getInspectionClasses() {
         return INSPECTIONS;

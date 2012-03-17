@@ -4,6 +4,7 @@ import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
 import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.psi.*;
@@ -18,14 +19,7 @@ import java.util.*;
  *
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
-public class DuplicationInCharacterClasses extends LocalInspectionTool {
-    @Nls
-    @NotNull
-    @Override
-    public String getGroupDisplayName() {
-        return RegExpNaziToolProvider.GROUP_NAME;
-    }
-
+public class DuplicationInCharacterClasses extends RegExpNaziInspection {
     @Nls
     @NotNull
     @Override
@@ -77,7 +71,7 @@ public class DuplicationInCharacterClasses extends LocalInspectionTool {
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
 
-    private class DeleteCharFix implements LocalQuickFix {
+    private class DeleteCharFix extends RegExpNaziQuickFix {
         private final RegExpChar ch;
 
         public DeleteCharFix(RegExpChar ch) {
@@ -88,11 +82,6 @@ public class DuplicationInCharacterClasses extends LocalInspectionTool {
         @NotNull
         public String getName() {
             return "Remove duplicate char " + ch.getText();
-        }
-
-        @NotNull
-        public String getFamilyName() {
-            return "Remove duplication";
         }
 
         public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor problemDescriptor) {

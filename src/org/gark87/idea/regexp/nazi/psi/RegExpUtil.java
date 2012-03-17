@@ -1,7 +1,11 @@
 package org.gark87.idea.regexp.nazi.psi;
 
+import com.intellij.lang.ASTNode;
+import com.intellij.psi.tree.IElementType;
+import org.intellij.lang.regexp.RegExpTT;
 import org.intellij.lang.regexp.psi.RegExpChar;
 import org.intellij.lang.regexp.psi.RegExpCharRange;
+import org.intellij.lang.regexp.psi.RegExpGroup;
 import org.intellij.lang.regexp.psi.RegExpSimpleClass;
 
 /**
@@ -33,6 +37,16 @@ public class RegExpUtil {
             default:
                 throw new IllegalStateException("Unexpected kind:" + kind);
         }
+    }
+
+    public static boolean isLookAround(RegExpGroup group) {
+        ASTNode node = group.getNode();
+        ASTNode firstChildNode = node.getFirstChildNode();
+        if (firstChildNode == null)
+            return false;
+        IElementType elementType = firstChildNode.getElementType();
+        return (elementType == RegExpTT.POS_LOOKAHEAD || elementType == RegExpTT.NEG_LOOKAHEAD ||
+                elementType == RegExpTT.POS_LOOKBEHIND || elementType == RegExpTT.NEG_LOOKBEHIND);
     }
 }
 

@@ -7,6 +7,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
 import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.intellij.lang.regexp.RegExpTT;
@@ -26,15 +27,7 @@ import java.util.List;
  *
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
-public class EmptyChoice extends LocalInspectionTool {
-
-    @Nls
-    @NotNull
-    @Override
-    public String getGroupDisplayName() {
-        return RegExpNaziToolProvider.GROUP_NAME;
-    }
-
+public class EmptyChoice extends RegExpNaziInspection {
     @Nls
     @NotNull
     @Override
@@ -79,17 +72,12 @@ public class EmptyChoice extends LocalInspectionTool {
                 new LocalQuickFix[]{new ReplaceEmptyChoice(pattern)}, ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
 
-    private class ReplaceEmptyChoice implements LocalQuickFix {
+    private class ReplaceEmptyChoice extends RegExpNaziQuickFix {
         private final RegExpPatternImpl pattern;
 
         @NotNull
         public String getName() {
             return "Replace with quantification";
-        }
-
-        @NotNull
-        public String getFamilyName() {
-            return "RegExpNazi";
         }
 
         public ReplaceEmptyChoice(RegExpPatternImpl pattern) {

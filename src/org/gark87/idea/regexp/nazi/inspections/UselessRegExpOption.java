@@ -6,6 +6,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiFile;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
 import org.gark87.idea.regexp.nazi.psi.RegExpRecursiveFinder;
 import org.intellij.lang.regexp.RegExpFile;
@@ -23,7 +24,7 @@ import java.util.List;
  *
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
-public class UselessRegExpOption extends LocalInspectionTool {
+public class UselessRegExpOption extends RegExpNaziInspection {
 
     private enum Flag {
         i {
@@ -91,13 +92,6 @@ public class UselessRegExpOption extends LocalInspectionTool {
     @Nls
     @NotNull
     @Override
-    public String getGroupDisplayName() {
-        return RegExpNaziToolProvider.GROUP_NAME;
-    }
-
-    @Nls
-    @NotNull
-    @Override
     public String getDisplayName() {
         return "Useless regexp option";
     }
@@ -148,7 +142,7 @@ public class UselessRegExpOption extends LocalInspectionTool {
         } while (true);
     }
 
-    private class RemoveUselessRegExpOption implements LocalQuickFix {
+    private class RemoveUselessRegExpOption extends RegExpNaziQuickFix {
         private final Flag flag;
 
         public RemoveUselessRegExpOption(Flag flag) {
@@ -158,11 +152,6 @@ public class UselessRegExpOption extends LocalInspectionTool {
         @NotNull
         public String getName() {
             return "Remove useless RegExp option";
-        }
-
-        @NotNull
-        public String getFamilyName() {
-            return "UselessRegExpOption";
         }
 
         public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor problemDescriptor) {

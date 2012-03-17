@@ -1,15 +1,12 @@
 package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
-import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
-import com.intellij.psi.util.PsiTreeUtil;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import org.gark87.idea.regexp.nazi.fixes.ReplaceRegExpWith;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
 import org.gark87.idea.regexp.nazi.psi.RegExpUtil;
 import org.intellij.lang.regexp.RegExpFile;
-import org.intellij.lang.regexp.RegExpFileType;
 import org.intellij.lang.regexp.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -25,14 +22,8 @@ import java.util.Set;
  *
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
-public class UselessCharacterClass extends LocalInspectionTool {
-
-    @Nls
-    @NotNull
-    @Override
-    public String getGroupDisplayName() {
-        return RegExpNaziToolProvider.GROUP_NAME;
-    }
+public class UselessCharacterClass extends RegExpNaziInspection {
+    private static final String FIX_NAME = "Remove character class brackets";
 
     @Nls
     @NotNull
@@ -91,40 +82,12 @@ public class UselessCharacterClass extends LocalInspectionTool {
         return result.toArray(new ProblemDescriptor[result.size()]);
     }
 
-    private ProblemDescriptor createProblemDescriptor(InspectionManager manager, boolean onTheFly, RegExpClass expClass, @Nullable String replacementText) {
-        return manager.createProblemDescriptor(expClass, "Useless character class brackets", onTheFly,
-                new LocalQuickFix[]{new RemoveCharacterClass(replacementText)}, ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
+    private ProblemDescriptor createProblemDescriptor(InspectionManager manager, boolean onTheFly, RegExpClass expClass,
+                                                      @Nullable String replacementText)
+    {
+        LocalQuickFix[] fixes = {new ReplaceRegExpWith(FIX_NAME, replacementText)};
+        return manager.createProblemDescriptor(expClass, "Useless character class brackets", onTheFly, fixes,
+                ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
 
-    private class RemoveCharacterClass implements LocalQuickFix {
-        private String replacementText;
-
-        public RemoveCharacterClass(String replacementText) {
-            this.replacementText = replacementText;
-        }
-
-        @NotNull
-        public String getName() {
-            return "Remove character class brackets";
-        }
-
-        @NotNull
-        public String getFamilyName() {
-            return "RegExpNazi";
-        }
-
-        public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor problemDescriptor) {
-            RegExpClass expClass = (RegExpClass) problemDescriptor.getPsiElement();
-            if (replacementText == null) {
-                expClass.delete();
-                return;
-            }
-            final PsiFileFactory factory = PsiFileFactory.getInstance(project);
-            final PsiFile f = factory.createFileFromText("dummy.regexp", RegExpFileType.INSTANCE, replacementText);
-            RegExpPattern replacement = PsiTreeUtil.getChildOfType(f, RegExpPattern.class);
-            assert replacement != null;
-            expClass.replace(replacement);
-        }
-
-    }
 }
