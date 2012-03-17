@@ -126,12 +126,15 @@ public class EmptyChoice extends LocalInspectionTool {
                 if (uncle != null && uncle instanceof RegExpQuantifier) {
                     RegExpQuantifier quantifier = (RegExpQuantifier)uncle;
                     RegExpQuantifier.Count count = quantifier.getCount();
-                    if (count.getMax() == Integer.MAX_VALUE) {
+                    int max = count.getMax();
+                    if (max == Integer.MAX_VALUE) {
                         newPattern.append("*");
                     } else if (count == RegExpQuantifier.SimpleCount.ONE_OR_MORE) {
                         newPattern.append("?");
+                    } else if (max == 1) {
+                        newPattern.append("?");
                     } else {
-                        newPattern.append("{0,").append(count.getMax()).append('}');
+                        newPattern.append("{0,").append(max).append('}');
                     }
                     newPattern.append(quantifier.getType().getToken());
                     uncle.delete();

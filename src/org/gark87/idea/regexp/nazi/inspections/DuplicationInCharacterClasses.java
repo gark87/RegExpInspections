@@ -63,7 +63,6 @@ public class DuplicationInCharacterClasses extends LocalInspectionTool {
                             continue;
                         for (RegExpChar regExpChar : singleChars.get(ch))
                             result.add(generateProblemDescriptor(regExpChar, manager, isOnTheFly));
-
                     }
                 }
             }

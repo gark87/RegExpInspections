@@ -7,6 +7,7 @@ import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
+import org.gark87.idea.regexp.nazi.psi.RegExpUtil;
 import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.intellij.lang.regexp.psi.*;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This inspection is about <code>[\\s]</code> or <code>[;]</code>.
@@ -54,8 +56,16 @@ public class UselessCharacterClass extends LocalInspectionTool {
             @Override
             public void visitRegExpClass(RegExpClass expClass) {
                 RegExpClassAnalyzer analyzer = new RegExpClassAnalyzer(expClass, false);
-                if (analyzer.isNegated())
-                    return;
+                if (analyzer.isNegated()) {
+                    if (!analyzer.getSingleChars().isEmpty())
+                        return;
+                    Set<RegExpSimpleClass> simpleClasses = analyzer.getSimpleClasses();
+                    if (simpleClasses.size() != 1)
+                        return;
+                    RegExpSimpleClass simpleClass = simpleClasses.iterator().next();
+                    String replacement = RegExpUtil.invertSimpleCharClass(simpleClass.getKind());
+                    result.add(createProblemDescriptor(manager, isOnTheFly, expClass, replacement));
+                }
                 RegExpClassElement only = null;
                 for (List<RegExpChar> chars : analyzer.getSingleChars().values()) {
                     int size = chars.size();
