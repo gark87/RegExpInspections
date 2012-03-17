@@ -16,6 +16,7 @@ public class UselessCharacterClassTest extends RegExpNaziTest {
         doTestAllRegexFix("[c]", "c");
         doTestAllRegexFix("[1]", "1");
         doTestAllRegexFix("[A]", "A");
+        doTestAllRegexFix("[;]", ";");
         doTestNoProblems("[^c]");
         doTestNoProblems("[^1]");
         doTestNoProblems("[^A]");
@@ -33,6 +34,7 @@ public class UselessCharacterClassTest extends RegExpNaziTest {
     @Test
     public void testSimpleCharacterClasses() throws Exception {
         doTestAllRegexFix("[\\s]", "\\s");
+        doTestFixes("", "[\\s]", "*", "\\s*");
         doTestAllRegexFix("[\\S]", "\\S");
         doTestAllRegexFix("[\\D]", "\\D");
         doTestAllRegexFix("[\\d]", "\\d");
