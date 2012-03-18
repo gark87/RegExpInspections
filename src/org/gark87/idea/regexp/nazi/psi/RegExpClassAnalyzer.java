@@ -106,6 +106,8 @@ public class RegExpClassAnalyzer {
         }
 
         public boolean containsChar(Character ch) {
+            if (from == null || to == null || ch == null)
+                return false;
             return from <= ch && ch <= to;
         }
 
