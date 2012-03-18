@@ -3,12 +3,11 @@ package org.gark87.idea.regexp.nazi.inspections;
 import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
 import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
-import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.intellij.lang.regexp.RegExpTT;
 import org.intellij.lang.regexp.psi.*;
@@ -16,7 +15,6 @@ import org.intellij.lang.regexp.psi.impl.RegExpPatternImpl;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,13 +39,10 @@ public class EmptyChoice extends RegExpNaziInspection {
         return "EmptyChoice";
     }
 
-
-    @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, final boolean isOnTheFly) {
-        if (file.getClass() != RegExpFile.class)
-            return ProblemDescriptor.EMPTY_ARRAY;
-        final List<ProblemDescriptor> result = new ArrayList<ProblemDescriptor>();
-        file.acceptChildren(new RegExpRecursiveElementVisitor() {
+    protected PsiElementVisitor createVisitor(final InspectionManager manager, final boolean isOnTheFly,
+                                              final List<ProblemDescriptor> result)
+    {
+        return new RegExpRecursiveElementVisitor() {
             @Override
             public void visitRegExpBranch(RegExpBranch branch) {
                 super.visitRegExpBranch(branch);
@@ -58,16 +53,15 @@ public class EmptyChoice extends RegExpNaziInspection {
                         result.add(createProblemDesc(nextSibling, patternParent, isOnTheFly, manager, "Left choice is empty"));
                     final PsiElement prevSibling = branch.getPrevSibling();
                     if (prevSibling != null && prevSibling.getNode().getElementType() == RegExpTT.UNION)
-                        result.add(createProblemDesc(prevSibling, patternParent, isOnTheFly,  manager, "Right choice is empty"));
+                        result.add(createProblemDesc(prevSibling, patternParent, isOnTheFly, manager, "Right choice is empty"));
                 }
             }
-        });
-        return result.toArray(new ProblemDescriptor[result.size()]);
+        };
+
     }
 
     private ProblemDescriptor createProblemDesc(PsiElement element, RegExpPatternImpl pattern, boolean isOnTheFly,
-                                                InspectionManager manager, String text)
-    {
+                                                InspectionManager manager, String text) {
         return manager.createProblemDescriptor(element, text, isOnTheFly,
                 new LocalQuickFix[]{new ReplaceEmptyChoice(pattern)}, ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
@@ -86,9 +80,9 @@ public class EmptyChoice extends RegExpNaziInspection {
 
         public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor problemDescriptor) {
             StringBuilder newPattern = new StringBuilder();
-            for(PsiElement element: pattern.getChildren()) {
+            for (PsiElement element : pattern.getChildren()) {
                 if (element instanceof RegExpBranch) {
-                    RegExpBranch branch = (RegExpBranch)element;
+                    RegExpBranch branch = (RegExpBranch) element;
                     if (branch.getAtoms().length == 0)
                         continue;
                     newPattern.append(branch.getText()).append('|');
@@ -112,7 +106,7 @@ public class EmptyChoice extends RegExpNaziInspection {
                 newPattern.insert(0, open.getText()).append(close.getText());
                 PsiElement uncle = group.getNextSibling();
                 if (uncle != null && uncle instanceof RegExpQuantifier) {
-                    RegExpQuantifier quantifier = (RegExpQuantifier)uncle;
+                    RegExpQuantifier quantifier = (RegExpQuantifier) uncle;
                     RegExpQuantifier.Count count = quantifier.getCount();
                     int max = count.getMax();
                     if (max == Integer.MAX_VALUE) {

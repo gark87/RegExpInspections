@@ -2,11 +2,9 @@ package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiFile;
-import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import com.intellij.psi.PsiElementVisitor;
 import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
-import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -33,13 +31,10 @@ public class DuplicationInCharacterClasses extends RegExpNaziInspection {
         return "DuplicationInsideClasses";
     }
 
-    @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, final boolean isOnTheFly) {
-        if (file.getClass() != RegExpFile.class)
-            return ProblemDescriptor.EMPTY_ARRAY;
-        final List<ProblemDescriptor> result = new ArrayList<ProblemDescriptor>();
-        file.acceptChildren(new RegExpRecursiveElementVisitor() {
-
+    protected PsiElementVisitor createVisitor(final InspectionManager manager, final boolean isOnTheFly,
+                                              final List<ProblemDescriptor> result)
+    {
+        return new RegExpRecursiveElementVisitor() {
             @Override
             public void visitRegExpClass(RegExpClass expClass) {
                 RegExpClassAnalyzer analyzer = new RegExpClassAnalyzer(expClass, true);
@@ -60,8 +55,7 @@ public class DuplicationInCharacterClasses extends RegExpNaziInspection {
                     }
                 }
             }
-        });
-        return result.toArray(new ProblemDescriptor[result.size()]);
+        };
     }
 
     private ProblemDescriptor generateProblemDescriptor(RegExpChar ch, InspectionManager manager, boolean isOnTheFly) {

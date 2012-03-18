@@ -1,18 +1,15 @@
 package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
-import com.intellij.psi.PsiFile;
-import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import com.intellij.psi.PsiElementVisitor;
 import org.gark87.idea.regexp.nazi.fixes.ReplaceRegExpWith;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
 import org.gark87.idea.regexp.nazi.psi.RegExpUtil;
-import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -38,12 +35,10 @@ public class UselessCharacterClass extends RegExpNaziInspection {
         return "UselessCharacterClass";
     }
 
-    @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, final boolean isOnTheFly) {
-        if (file.getClass() != RegExpFile.class)
-            return ProblemDescriptor.EMPTY_ARRAY;
-        final List<ProblemDescriptor> result = new ArrayList<ProblemDescriptor>();
-        file.acceptChildren(new RegExpRecursiveElementVisitor() {
+    protected PsiElementVisitor createVisitor(final InspectionManager manager, final boolean isOnTheFly,
+                                              final List<ProblemDescriptor> result)
+    {
+        return new RegExpRecursiveElementVisitor() {
             @Override
             public void visitRegExpClass(RegExpClass expClass) {
                 RegExpClassAnalyzer analyzer = new RegExpClassAnalyzer(expClass, false);
@@ -66,7 +61,7 @@ public class UselessCharacterClass extends RegExpNaziInspection {
                         return;
                     RegExpChar regExpChar = chars.get(0);
                     Character ch = regExpChar.getValue();
-                    if (ch == null || ch == '.' || ch == ']' || ch =='[')
+                    if (ch == null || ch == '.' || ch == ']' || ch == '[')
                         continue;
                     only = regExpChar;
                 }
@@ -78,13 +73,11 @@ public class UselessCharacterClass extends RegExpNaziInspection {
                 if (only != null)
                     result.add(createProblemDescriptor(manager, isOnTheFly, expClass, only.getText()));
             }
-        });
-        return result.toArray(new ProblemDescriptor[result.size()]);
+        };
     }
 
     private ProblemDescriptor createProblemDescriptor(InspectionManager manager, boolean onTheFly, RegExpClass expClass,
-                                                      @Nullable String replacementText)
-    {
+                                                      @Nullable String replacementText) {
         LocalQuickFix[] fixes = {new ReplaceRegExpWith(FIX_NAME, replacementText)};
         return manager.createProblemDescriptor(expClass, "Useless character class brackets", onTheFly, fixes,
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING);

@@ -1,24 +1,16 @@
 package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.*;
-import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
-import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
+import com.intellij.psi.PsiElementVisitor;
 import org.gark87.idea.regexp.nazi.fixes.ReplaceRegExpWith;
 import org.gark87.idea.regexp.nazi.psi.RegExpRecursiveFinder;
 import org.gark87.idea.regexp.nazi.psi.RegExpUtil;
-import org.intellij.lang.regexp.RegExpElementType;
-import org.intellij.lang.regexp.RegExpElementTypes;
-import org.intellij.lang.regexp.RegExpFile;
-import org.intellij.lang.regexp.RegExpTT;
 import org.intellij.lang.regexp.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,12 +36,10 @@ public class CapturingZeroWidthAssertion extends RegExpNaziInspection {
         return "CapturingZeroWidthAssertion";
     }
 
-    @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull final InspectionManager manager, final boolean isOnTheFly) {
-        if (file.getClass() != RegExpFile.class)
-            return ProblemDescriptor.EMPTY_ARRAY;
-        final List<ProblemDescriptor> result = new ArrayList<ProblemDescriptor>();
-        file.acceptChildren(new RegExpRecursiveElementVisitor() {
+    protected PsiElementVisitor createVisitor(final InspectionManager manager, final boolean isOnTheFly,
+                                                       final List<ProblemDescriptor> result)
+    {
+        return new RegExpRecursiveElementVisitor() {
             @Override
             public void visitRegExpGroup(RegExpGroup group) {
                 super.visitRegExpGroup(group);
@@ -110,16 +100,14 @@ public class CapturingZeroWidthAssertion extends RegExpNaziInspection {
                     return;
                 result.add(createProblemDescriptor(manager, isOnTheFly, group, pattern.getText()));
             }
-        });
-        return result.toArray(new ProblemDescriptor[result.size()]);
+        };
     }
 
     private ProblemDescriptor createProblemDescriptor(InspectionManager manager, boolean onTheFly, RegExpGroup group,
-                                                      @Nullable String replacementText)
-    {
+                                                      @Nullable String replacementText) {
         LocalQuickFix[] fixes = {new ReplaceRegExpWith(FIX_NAME, replacementText)};
         return manager.createProblemDescriptor(group, "Useless group", onTheFly, fixes,
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
-      }
+    }
 
 }
