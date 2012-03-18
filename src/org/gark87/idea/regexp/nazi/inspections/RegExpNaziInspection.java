@@ -1,7 +1,6 @@
 package org.gark87.idea.regexp.nazi.inspections;
 
 import com.intellij.codeInspection.LocalInspectionTool;
-import org.gark87.idea.regexp.nazi.RegExpNaziToolProvider;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +15,6 @@ public abstract class RegExpNaziInspection extends LocalInspectionTool {
     @NotNull
     @Override
     public String getGroupDisplayName() {
-        return RegExpNaziToolProvider.GROUP_NAME;
+        return "RegExpNazi";
     }
 }

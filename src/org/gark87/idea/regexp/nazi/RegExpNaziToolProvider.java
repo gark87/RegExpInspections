@@ -9,7 +9,6 @@ import org.gark87.idea.regexp.nazi.inspections.*;
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
 public class RegExpNaziToolProvider implements InspectionToolProvider {
-    public static final String GROUP_NAME = "RegExpNazi";
     private static final Class[] INSPECTIONS = {EmptyChoice.class, DuplicationInCharacterClasses.class,
             UselessCharacterClass.class, UselessRegExpOption.class, CapturingZeroWidthAssertion.class};
 
