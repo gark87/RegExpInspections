@@ -4,8 +4,6 @@ import com.intellij.codeInspection.LocalInspectionTool;
 import org.gark87.idea.regexp.nazi.inspections.UselessRegExpOption;
 import org.junit.Test;
 
-import java.util.regex.Pattern;
-
 /**
  * Test for {@link UselessRegExpOptionTest}
  *

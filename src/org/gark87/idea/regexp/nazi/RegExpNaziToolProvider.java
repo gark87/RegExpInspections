@@ -10,7 +10,8 @@ import org.gark87.idea.regexp.nazi.inspections.*;
  */
 public class RegExpNaziToolProvider implements InspectionToolProvider {
     private static final Class[] INSPECTIONS = {EmptyChoice.class, DuplicationInCharacterClasses.class,
-            UselessCharacterClass.class, UselessRegExpOption.class, CapturingZeroWidthAssertion.class};
+            UselessCharacterClass.class, UselessRegExpOption.class, CapturingZeroWidthAssertion.class,
+            ManualSimpleClass.class};
 
     public Class[] getInspectionClasses() {
         return INSPECTIONS;

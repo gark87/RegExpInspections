@@ -82,5 +82,4 @@ public class UselessCharacterClass extends RegExpNaziInspection {
         return manager.createProblemDescriptor(expClass, "Useless character class brackets", onTheFly, fixes,
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING);
     }
-
 }

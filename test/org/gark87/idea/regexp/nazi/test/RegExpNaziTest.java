@@ -1,30 +1,22 @@
 package org.gark87.idea.regexp.nazi.test;
 
-import com.intellij.codeInsight.CodeInsightTestCase;
 import com.intellij.codeInspection.InspectionManager;
 import com.intellij.codeInspection.LocalInspectionTool;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.codeInspection.QuickFix;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.testFramework.InspectionFixtureTestCase;
 import com.intellij.testFramework.PlatformTestCase;
-import com.intellij.testFramework.UsefulTestCase;
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture;
 import com.intellij.testFramework.fixtures.IdeaProjectTestFixture;
 import com.intellij.testFramework.fixtures.IdeaTestFixtureFactory;
 import com.intellij.testFramework.fixtures.TestFixtureBuilder;
-import org.apache.velocity.runtime.parser.ParserTreeConstants;
 import org.gark87.idea.regexp.nazi.inspections.EmptyChoice;
 import org.intellij.lang.regexp.RegExpFileType;
-import org.junit.Test;
-
-import javax.xml.transform.Result;
-import java.io.File;
 import java.io.IOException;
 
 /**

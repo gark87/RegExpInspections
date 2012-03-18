@@ -5,17 +5,14 @@ import com.intellij.lang.ASTNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiFile;
 import org.gark87.idea.regexp.nazi.fixes.RegExpNaziQuickFix;
 import org.gark87.idea.regexp.nazi.psi.RegExpClassAnalyzer;
 import org.gark87.idea.regexp.nazi.psi.RegExpRecursiveFinder;
-import org.intellij.lang.regexp.RegExpFile;
 import org.intellij.lang.regexp.psi.*;
 import org.intellij.lang.regexp.psi.impl.RegExpOptionsImpl;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

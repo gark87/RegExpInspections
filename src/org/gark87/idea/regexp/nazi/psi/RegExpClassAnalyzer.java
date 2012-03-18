@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class RegExpClassAnalyzer {
     private final Map<Character, List<RegExpChar>> singleChars = new HashMap<Character, List<RegExpChar>>();
-    private final Set<CharRange> characterSets = new HashSet<CharRange>();
+    private final List<CharRange> characterSets = new ArrayList<CharRange>();
     private final Set<RegExpSimpleClass> simpleClasses = new HashSet<RegExpSimpleClass>();
     private final boolean negated;
 
@@ -62,7 +62,7 @@ public class RegExpClassAnalyzer {
         return singleChars;
     }
 
-    public Set<CharRange> getCharacterRanges() {
+    public List<CharRange> getCharacterRanges() {
         return characterSets;
     }
 
@@ -77,8 +77,10 @@ public class RegExpClassAnalyzer {
     public static class CharRange {
         private final Character from;
         private final Character to;
+        private final RegExpCharRange psiElement;
 
         private CharRange(RegExpCharRange charRange) {
+            psiElement = charRange;
             RegExpCharRange.Endpoint fromEndPoint = charRange.getFrom();
             from = RegExpUtil.convertEndPointToChar(fromEndPoint);
             to = RegExpUtil.convertEndPointToChar(charRange.getTo());
@@ -87,10 +89,12 @@ public class RegExpClassAnalyzer {
         private CharRange(char from, char to) {
             this.from = from;
             this.to = to;
+            psiElement = null;
         }
 
         private CharRange(char c) {
             this.from = this.to = c;
+            psiElement = null;
         }
 
         public Character getFrom() {
@@ -103,6 +107,10 @@ public class RegExpClassAnalyzer {
 
         public boolean containsChar(Character ch) {
             return from <= ch && ch <= to;
+        }
+
+        public RegExpCharRange getPsiElement() {
+            return psiElement;
         }
     }
 
