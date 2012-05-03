@@ -17,6 +17,7 @@ import com.intellij.testFramework.fixtures.IdeaTestFixtureFactory;
 import com.intellij.testFramework.fixtures.TestFixtureBuilder;
 import org.gark87.idea.regexp.nazi.inspections.EmptyChoice;
 import org.intellij.lang.regexp.RegExpFileType;
+
 import java.io.IOException;
 
 /**

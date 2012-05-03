@@ -11,7 +11,7 @@ import org.gark87.idea.regexp.nazi.inspections.*;
 public class RegExpNaziToolProvider implements InspectionToolProvider {
     private static final Class[] INSPECTIONS = {EmptyChoice.class, DuplicationInCharacterClasses.class,
             UselessCharacterClass.class, UselessRegExpOption.class, CapturingZeroWidthAssertion.class,
-            ManualSimpleClass.class, ExtraSlash.class};
+            ManualSimpleClass.class, ExtraSlash.class, RedundantEscapeInCharacterClass.class};
 
     public Class[] getInspectionClasses() {
         return INSPECTIONS;
