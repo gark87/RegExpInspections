@@ -19,6 +19,11 @@ import org.intellij.lang.regexp.psi.RegExpRecursiveElementVisitor;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +31,23 @@ import java.util.List;
  * @author gark87 <arkady.galyash@gmail.com>
  */
 public class QuotingText extends RegExpNaziInspection {
-    private final static int MAX = 3;
+    public long threshold = 3;
+
+    @Override
+    public JComponent createOptionsPanel() {
+        JPanel result = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        result.add(new JLabel("Escapes threshold:"));
+        JFormattedTextField textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        textField.setValue(threshold);
+        textField.setColumns(5);
+        result.add(textField);
+        textField.addPropertyChangeListener("value", new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent evt) {
+                threshold = (Long)evt.getNewValue();
+            }
+        });
+        return result;
+    }
 
     private final static LocalQuickFix FIX = new RegExpNaziQuickFix() {
         @NotNull
@@ -73,7 +94,7 @@ public class QuotingText extends RegExpNaziInspection {
                 for (int i = 0; i < length; i++) {
                     PsiElement child = children[i];
                     if (!(child instanceof RegExpChar)) {
-                        if (escaped > MAX)
+                        if (escaped >= threshold)
                             result.add(createProblemDescriptor(manager, isOnTheFly, children[startIndex], children[i - 1]));
                         escaped = 0;
                         startIndex = -1;
@@ -90,7 +111,7 @@ public class QuotingText extends RegExpNaziInspection {
                     if (leaf.getElementType() == RegExpTT.ESC_CHARACTER)
                         escaped++;
                 }
-                if (escaped > MAX)
+                if (escaped >= threshold)
                     result.add(createProblemDescriptor(manager, isOnTheFly, children[startIndex], children[length - 1]));
             }
         };
