@@ -8,12 +8,16 @@ import org.intellij.lang.regexp.psi.RegExpCharRange;
 import org.intellij.lang.regexp.psi.RegExpGroup;
 import org.intellij.lang.regexp.psi.RegExpSimpleClass;
 
+import java.util.regex.Pattern;
+
 /**
  * This class contains IntelliJ util methods.
  *
  * @author gark87 <a href="mailto:my_another@mail.ru">my_another&064;mail.ru</a>
  */
 public class RegExpUtil {
+    private static final Pattern ESCAPED = Pattern.compile("\\\\{1,2}[trn]");
+
     public static Character convertEndPointToChar(RegExpCharRange.Endpoint endPoint) {
         if (endPoint instanceof RegExpChar)
             return ((RegExpChar) endPoint).getValue();
@@ -37,6 +41,14 @@ public class RegExpUtil {
             default:
                 throw new IllegalStateException("Unexpected kind:" + kind);
         }
+    }
+    
+    public static boolean isEscaped(RegExpChar ch) {
+        String text = ch.getText();
+        if (!text.startsWith("\\"))
+            return false;
+        return !ESCAPED.matcher(text).matches();
+
     }
 
     public static boolean isLookAround(RegExpGroup group) {

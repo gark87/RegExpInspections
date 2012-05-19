@@ -8,6 +8,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.testFramework.InspectionFixtureTestCase;
 import com.intellij.testFramework.PlatformTestCase;
@@ -77,8 +78,11 @@ public abstract class RegExpNaziTest extends InspectionFixtureTestCase {
         if (problemDescriptors.length == 0)
             assertTrue("no problems was found for `" + regExp + "`", problemDescriptors.length > 0);
         final ProblemDescriptor pd = problemDescriptors[0];
-        String problem = pd.getPsiElement().getText();
-        assertEquals("Wrong error text", error, problem);
+        PsiElement startElement = pd.getStartElement();
+        int startOffset = startElement.getTextOffset();
+        PsiElement endElement = pd.getEndElement();
+        int endOffset = endElement.getTextOffset() + endElement.getTextLength();
+        assertEquals("Wrong error text", error, regExp.substring(startOffset, endOffset));
         ApplicationManager.getApplication().runWriteAction(new Runnable() {
             public void run() {
                 int length = afterFixes.length;
