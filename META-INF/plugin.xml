@@ -3,7 +3,9 @@
   <description>This is a bunch of inspections about restrictions for RegExps.</description>
   <version>0.0.2-DIRTY</version>
   <vendor>gark87</vendor>
-  <idea-version since-build="8000"/>
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.lang</depends>
+<!--  <idea-version since-build="8000"/> -->
 
   <application-components>
     <!-- Add your application components here -->
