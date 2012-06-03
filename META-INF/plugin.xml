@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <name>RegExpNazi</name>
-  <description>This is a bunch of inspections about restrictions for RegExps.</description>
-  <version>0.0.2-DIRTY</version>
+  <description>This is a bunch of inspections about restrictions for Regular Expressions.</description>
+  <version>0.0.2</version>
   <vendor>gark87</vendor>
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
