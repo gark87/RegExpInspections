@@ -42,6 +42,8 @@ public class UselessCharacterClass extends RegExpNaziInspection {
             @Override
             public void visitRegExpClass(RegExpClass expClass) {
                 RegExpClassAnalyzer analyzer = new RegExpClassAnalyzer(expClass, false);
+                if (!analyzer.getCharacterRanges().isEmpty())
+                    return;
                 if (analyzer.isNegated()) {
                     if (!analyzer.getSingleChars().isEmpty())
                         return;

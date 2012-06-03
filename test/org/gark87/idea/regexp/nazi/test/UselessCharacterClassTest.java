@@ -73,6 +73,11 @@ public class UselessCharacterClassTest extends RegExpNaziTest {
         doTestAllRegexFix("[\\e]", "\\e");
     }
 
+    @Test
+    public void testRange() throws Exception {
+        doTestNoProblems("[a0-9]");
+    }
+
     @Override
     protected LocalInspectionTool createInspectionToTest() {
         return new UselessCharacterClass();
